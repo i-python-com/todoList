@@ -1,16 +1,23 @@
-import React from "react"
-import TodoItem from "./components/TodoItem"
-import todosData from "./components/todosData"
+import React from 'react'
+import TodoItem from './components/TodoItem'
+import todosData from './components/todosData'
 require('./style.css')
 
-function App() {
-  const todoItems = todosData.map(item => <TodoItem key={item.id} item={item} />)
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = { todosData }
+  }
 
-  return (
-    <div className="todo-list">
-      {todoItems}
-    </div>
-  )
+  render() {
+    const todoItems = this.state.todosData.map(item => <TodoItem key={item.id} item={item} />)
+
+    return (
+      <div className="todo-list">
+        {todoItems}
+      </div>
+    )
+  }
 }
 
 export default App
