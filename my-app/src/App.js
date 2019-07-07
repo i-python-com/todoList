@@ -28,17 +28,24 @@ class App extends React.Component {
   }
 
   render() {
-    const todoItems = this.state.todos.map(item =>
+    const todoItems = this.state.todos.map(item => (
       <TodoItem
         key={item.id}
         item={item}
-        handleChange={this.handleChange} />)
+        handleChange={this.handleChange}
+        style={
+          item.completed
+            ? {
+                fontStyle: 'italic',
+                color: '#cdcdcd',
+                textDecoration: 'line-through'
+              }
+            : null
+        }
+      />
+    ))
 
-    return (
-      <div className="todo-list">
-        {todoItems}
-      </div>
-    )
+    return <div className="todo-list">{todoItems}</div>
   }
 }
 
